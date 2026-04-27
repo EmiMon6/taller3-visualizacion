@@ -13,9 +13,14 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 import ssl
+import platform
 
-# Desactivar la verificación SSL para poder descargar el dataset de seaborn en macOS
-ssl._create_default_https_context = ssl._create_unverified_context
+# Desactivar la verificación SSL solo en macOS para evitar errores en Streamlit Cloud (Linux)
+if platform.system() == "Darwin":
+    try:
+        ssl._create_default_https_context = ssl._create_unverified_context
+    except AttributeError:
+        pass
 
 # linea para que el contenido ocupe todo el ancho de la hoja
 st.set_page_config(layout="wide")
