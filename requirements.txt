@@ -3,3 +3,5 @@ pandas
 numpy
 matplotlib
 seaborn
+
+# Force rebuild to apply Python 3.11
